@@ -24,6 +24,6 @@ steps:
       tagSource: manual
       tag: 0.0.3
       assets: |
-        $(Build.ArtifactStagingDirectory)/ztproxy.
+        $(Build.ArtifactStagingDirectory)/ztproxy.*
 
 
