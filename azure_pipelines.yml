@@ -1,0 +1,7 @@
+pool:
+  vmImage: 'Ubuntu 18.04'
+
+steps:
+  - script: make
+    displayName: Build
+
