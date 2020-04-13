@@ -7,7 +7,7 @@ steps:
     inputs:
       connection: github
       userRepository: kennep/libzt
-  - scipt: |
+  - script: |
       mkdir libzt
       tar -C libzt -zxf $(System.ArtifactsDirectory)/libzt-linux-x86_64.tgz
     displayName: Unpack libzt
