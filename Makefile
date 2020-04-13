@@ -6,13 +6,14 @@ CPPFLAGS=-Ilibzt/include
 LIBZT_DEBUG=libzt/lib/debug/linux-x86_64/libzt.a
 LIBZT_RELEASE=libzt/lib/release/linux-x86_64/libzt.a
 LDFLAGS=-lpthread -static-libstdc++ -static-libgcc
+CXX=c++
 all: ztproxy_debug ztproxy_release
 
 ztproxy_debug: $(HEADERS) $(SOURCES) $(LIBZT_DEBUG)
-	c++ $(CPPFLAGS) $(SOURCES) $(LIBZT_DEBUG) $(LDFLAGS) -std=c++17 -Wall -g -o ztproxy_debug
+	$(CXX) $(CPPFLAGS) $(SOURCES) $(LIBZT_DEBUG) $(LDFLAGS) -std=c++17 -Wall -g -o ztproxy_debug
 
 ztproxy_release: $(HEADERS) $(SOURCES) $(LIBZT_RELEASE)
-	c++ $(CPPFLAGS) $(SOURCES) $(LIBZT_RELEASE) $(LDFLAGS) -std=c++17 -Wall -o ztproxy_release
+	$(CXX) $(CPPFLAGS) $(SOURCES) $(LIBZT_RELEASE) $(LDFLAGS) -std=c++17 -Wall -o ztproxy_release
 
 libzt:
 	git clone https://github.com/zerotier/libzt

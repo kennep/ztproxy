@@ -2,6 +2,6 @@ pool:
   vmImage: 'Ubuntu 18.04'
 
 steps:
-  - script: make
+  - script: make CXX=g++-8
     displayName: Build
 
