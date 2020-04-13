@@ -9,19 +9,10 @@ LDFLAGS=-lpthread -static-libstdc++ -static-libgcc
 CXX=c++
 all: ztproxy_debug ztproxy_release
 
-ztproxy_debug: $(HEADERS) $(SOURCES) $(LIBZT_DEBUG)
+ztproxy_debug: $(HEADERS) $(SOURCES)
 	$(CXX) $(CPPFLAGS) $(SOURCES) $(LIBZT_DEBUG) $(LDFLAGS) -std=c++11 -Wall -g -o ztproxy_debug
 
-ztproxy_release: $(HEADERS) $(SOURCES) $(LIBZT_RELEASE)
+ztproxy_release: $(HEADERS) $(SOURCES)
 	$(CXX) $(CPPFLAGS) $(SOURCES) $(LIBZT_RELEASE) $(LDFLAGS) -std=c++11 -Wall -o ztproxy_release
 
-libzt:
-	git clone https://github.com/zerotier/libzt
-	(cd libzt && make update && make patch)
-
-$(LIBZT_DEBUG): libzt
-	(cd libzt && make host_debug)
-
-$(LIBZT_RELEASE): libzt
-	(cd libzt && make host)
 
