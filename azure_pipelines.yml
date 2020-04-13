@@ -22,7 +22,8 @@ steps:
     inputs:
       gitHubConnection: github
       tagSource: manual
-      tag: 0.0.2
-
+      tag: 0.0.3
+      assets: |
+        $(Build.ArtifactStagingDirectory)/ztproxy.
 
 
