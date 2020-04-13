@@ -24,7 +24,7 @@ ztproxy::zt_manager::instance;
 
 ztproxy::zt_manager::zt_manager(uint64_t network_id)
 {
-    lock_guard lk(state_mutex);
+    lock_guard<mutex> lk(state_mutex);
     if(instance != NULL)
     {
         throw logic_error("zt_manager can only be instantiated once");
@@ -38,7 +38,7 @@ ztproxy::zt_manager::zt_manager(uint64_t network_id)
 void
 ztproxy::zt_manager::start()
 {
-    unique_lock lk(state_mutex);
+    unique_lock<mutex> lk(state_mutex);
     if(started)
     {
         throw logic_error("zt_manager already started");
@@ -107,7 +107,7 @@ ztproxy::zt_manager::zt_callback(zts_callback_msg *msg)
         case ZTS_EVENT_NODE_ONLINE:
         {
             cerr << "ZTS_EVENT_NODE_ONLINE, node_id=" << utils::hex(msg->node->address) << endl;
-            unique_lock lk(state_mutex);
+            unique_lock<mutex> lk(state_mutex);
             started_condition.notify_all();
             break;
         }

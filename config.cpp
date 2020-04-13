@@ -2,13 +2,12 @@
 #include "utils.h"
 
 #include <stdexcept>
-#include <filesystem>
 #include <sstream>
 #include <iomanip>
 
 using namespace std;
 
-filesystem::path
+utils::path
 config::get_config_home()
 {
     auto config_home = utils::getenv("XDG_CONFIG_HOME");
@@ -18,13 +17,13 @@ config::get_config_home()
         if(!home.has_value()) {
             throw runtime_error("Could not determine config location - HOME environment variable not set!");
         }
-        filesystem::path home_path = filesystem::path(home.value()) / ".config";
+        utils::path home_path = utils::path(home.value()) / ".config";
         return home_path;
     }
     return config_home.value();
 }
 
-filesystem::path
+utils::path
 config::get_config_path(uint64_t network_id)
 {
     auto config_home = config::get_config_home();

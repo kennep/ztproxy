@@ -36,14 +36,14 @@ utils::gethostname()
     return buffer;
 }
 
-optional<string>
+utils::optional<string>
 utils::getenv(const string &name)
 {
     char *value = ::getenv(name.c_str());
     if(value == NULL) {
         return optional<string>();
     }
-    return optional(value);
+    return optional<string>(value);
 }
 
 vector<string>

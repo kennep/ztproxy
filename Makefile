@@ -10,10 +10,10 @@ CXX=c++
 all: ztproxy_debug ztproxy_release
 
 ztproxy_debug: $(HEADERS) $(SOURCES) $(LIBZT_DEBUG)
-	$(CXX) $(CPPFLAGS) $(SOURCES) $(LIBZT_DEBUG) $(LDFLAGS) -std=c++17 -Wall -g -o ztproxy_debug
+	$(CXX) $(CPPFLAGS) $(SOURCES) $(LIBZT_DEBUG) $(LDFLAGS) -std=c++11 -Wall -g -o ztproxy_debug
 
 ztproxy_release: $(HEADERS) $(SOURCES) $(LIBZT_RELEASE)
-	$(CXX) $(CPPFLAGS) $(SOURCES) $(LIBZT_RELEASE) $(LDFLAGS) -std=c++17 -Wall -o ztproxy_release
+	$(CXX) $(CPPFLAGS) $(SOURCES) $(LIBZT_RELEASE) $(LDFLAGS) -std=c++11 -Wall -o ztproxy_release
 
 libzt:
 	git clone https://github.com/zerotier/libzt
