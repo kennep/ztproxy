@@ -16,12 +16,13 @@ steps:
   - script: |
       cp ztproxy_debug $(Build.ArtifactStagingDirectory)/ztproxy.linux-x86_64-debug
       cp ztproxy_release $(Build.ArtifactStagingDirectory)/ztproxy.linux-x86_64-release
+    displayName: Prepare artifacts
   - task: GitHubRelease@0
     displayName: Upload ztproxy
     inputs:
       gitHubConnection: github
       tagSource: manual
-      tag: 0.0.1
+      tag: 0.0.2
 
 
 
