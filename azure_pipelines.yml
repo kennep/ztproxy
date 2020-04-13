@@ -26,6 +26,7 @@ steps:
       gitHubConnection: github
       tagSource: manual
       tag: $(version)
+      action: edit
       assets: |
         $(Build.ArtifactStagingDirectory)/ztproxy.*
 
