@@ -2,6 +2,7 @@
 #include "config.h"
 #include "proxy_manager.h"
 #include "zt_manager.h"
+#include "version.h"
 
 #include <iostream>
 #include <string>
@@ -20,6 +21,8 @@ usage(string program)
     << "  --network-id|-n     Join ZeroTier network NETWORKID. Required." << endl
     << "  --ipv4|-4           Use IPv4 only to connect to remote targets (default)" << endl
     << "  --ipv6|-6           Use IPv6 only to connect to remote targets" << endl
+    << "  --help|-h           Print this help" << endl
+    << "  --version|-v        Print version number" << endl
 	  << "Arguments:" << endl
 	  << "   SRCPORT            Source port on local machine to listen on" << endl
 	  << "   TARGETHOST         Target host to forward traffic to on the ZeroTier network" << endl
@@ -40,12 +43,13 @@ main(int argc, char **argv)
             {"help",        no_argument,       0,  'h' },
             {"ipv4",        no_argument,       0,  '4' },
             {"ipv6",        no_argument,       0,  '6' },
+            {"version",     no_argument,       0,  'v' },
             {0,             0,                 0,  0 }
         };
 
   opterr = 1;
 
-  while ((c = getopt_long(argc, argv, "n:h:4:6", long_options, NULL)) != -1)
+  while ((c = getopt_long(argc, argv, "n:h46v", long_options, NULL)) != -1)
     switch(c)
       {
       case 'n':
@@ -68,6 +72,9 @@ main(int argc, char **argv)
       case '?':
         usage(argv[0]);
         return EXIT_FAILURE;
+      case 'v':
+        cerr << argv[0] << " version " << ztproxy::version << endl;
+        return EXIT_SUCCESS;
       default:
         abort ();
       }

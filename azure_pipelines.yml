@@ -2,7 +2,7 @@ pool:
   vmImage: 'Ubuntu 18.04'
 
 variables:
-  version: 0.0.5
+  version: 0.0.6
 
 steps:
   - task: DownloadGitHubRelease@0
@@ -14,7 +14,9 @@ steps:
       mkdir libzt
       tar -C libzt -zxf $(System.ArtifactsDirectory)/libzt-linux-x86_64.tgz
     displayName: Unpack libzt
-  - script: make CXX=g++-8
+  - script: |
+      echo -n '#include "version.h"\n\nstd::string ztproxy::version = "$(version)"\n' > version.cpp
+      make CXX=g++-8
     displayName: Build
   - script: |
       cp ztproxy_debug $(Build.ArtifactStagingDirectory)/ztproxy.linux-x86_64-debug
