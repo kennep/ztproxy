@@ -95,7 +95,7 @@ main(int argc, char **argv)
   try {
     zt_manager ztm(network_id);
     ztm.start();
-    proxy_manager mgr(ztm, use_ipv4, use_ipv6);  
+    proxy_manager mgr(use_ipv4, use_ipv6);  
 
     for(int i=optind; i<argc; ++i)
     {

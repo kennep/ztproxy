@@ -23,6 +23,7 @@ namespace ztproxy
         virtual int zts_family() const = 0;
         virtual zts_sockaddr_storage zts_sockaddr() const = 0;
         virtual int zts_addrlen() const = 0;
+        virtual ~ip_address() {}
         static std::unique_ptr<ip_address> from_sockaddr(const sockaddr &addr);
         static std::unique_ptr<ip_address> from_addrinfo(const addrinfo &addr);
         static std::vector<std::unique_ptr<ip_address>> lookup(const std::string hostname, const std::string service);

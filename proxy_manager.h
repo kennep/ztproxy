@@ -41,12 +41,11 @@ namespace ztproxy {
         friend class proxy;
     private:
         std::list<proxy> proxies;
-        const zt_manager &zt_mgr;
 
         bool use_ipv4;
         bool use_ipv6;
     public:
-        proxy_manager(const zt_manager &zt_manager, bool use_ipv4, bool use_ipv6);
+        proxy_manager(bool use_ipv4, bool use_ipv6);
         void add_proxy(const std::string &target_spec);
         void main();
     };

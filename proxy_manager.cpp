@@ -370,7 +370,7 @@ ztproxy::proxy::write_all_remote(int fd, void *buffer, size_t len)
     }
 }
 
-ztproxy::proxy_manager::proxy_manager(const zt_manager &ztmanager, bool use_ipv4, bool use_ipv6) : zt_mgr(ztmanager)
+ztproxy::proxy_manager::proxy_manager(bool use_ipv4, bool use_ipv6)
 {
     this->use_ipv4 = use_ipv4;
     this->use_ipv6 = use_ipv6;
