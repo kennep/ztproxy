@@ -18,7 +18,7 @@ steps:
       cat <<EOF > version.cpp
       #include "version.h"
       
-      std::string ztproxy::version = "$(version)"
+      std::string ztproxy::version = "$(version)";
       EOF
       make CXX=g++-8
     displayName: Build
