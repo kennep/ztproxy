@@ -15,7 +15,11 @@ steps:
       tar -C libzt -zxf $(System.ArtifactsDirectory)/libzt-linux-x86_64.tgz
     displayName: Unpack libzt
   - script: |
-      echo -n '#include "version.h"\n\nstd::string ztproxy::version = "$(version)"\n' > version.cpp
+      cat <<EOF > version.cpp
+      #include "version.h"
+      
+      std::string ztproxy::version = "$(version)"
+      EOF
       make CXX=g++-8
     displayName: Build
   - script: |
