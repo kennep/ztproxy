@@ -2,7 +2,9 @@
 #include "config.h"
 #include "proxy_manager.h"
 #include "zt_manager.h"
+#include "command_server.h"
 #include "version.h"
+
 
 #include <iostream>
 #include <string>
@@ -102,7 +104,11 @@ main(int argc, char **argv)
       mgr.add_proxy(argv[i]);
     }
 
-    mgr.main();
+    command_server cmd_server(network_id, mgr);
+    cmd_server.run();
+
+    std::string bar;
+    cin >> bar;
 
     return 0;
   }

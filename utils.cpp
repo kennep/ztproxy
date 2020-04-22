@@ -25,6 +25,14 @@ utils::throw_errno(const string &what)
     throw system_error(errno, generic_category(), what);
 }
 
+void
+utils::throw_errno(const string &what, function<void()> cleanup)
+{
+    auto e = errno;
+    cleanup();
+    throw system_error(e, generic_category(), what);
+}
+
 string
 utils::gethostname()
 {

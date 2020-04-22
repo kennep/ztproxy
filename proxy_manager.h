@@ -47,7 +47,6 @@ namespace ztproxy {
     public:
         proxy_manager(bool use_ipv4, bool use_ipv6);
         void add_proxy(const std::string &target_spec);
-        void main();
     };
 }
 

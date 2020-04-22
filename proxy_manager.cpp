@@ -383,9 +383,3 @@ ztproxy::proxy_manager::add_proxy(const string &target)
     proxies.back().listen();
 }
 
-void
-ztproxy::proxy_manager::main()
-{
-    std::string foo;
-    cin >> foo;
-}

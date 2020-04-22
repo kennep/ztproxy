@@ -7,6 +7,7 @@
 #include <system_error>
 #include <atomic>
 #include <iostream>
+#include <functional>
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -17,6 +18,7 @@
 namespace utils {
     void throw_errno();
     void throw_errno(const std::string &what);
+    void throw_errno(const std::string &what, std::function<void()> cleanup);
     std::string gethostname();
     std::string inet_ntop(const sockaddr_in *addr);
     std::string inet_ntop(const sockaddr_in6 *addr);
